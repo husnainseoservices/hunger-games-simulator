@@ -34,6 +34,15 @@ export default function HomePage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: HOME_FAQS.map(f => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }) }} />
       <style>{`
         .home-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;}
         .home-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
@@ -234,10 +243,104 @@ export default function HomePage() {
         </div>
       </section>
 
-      <style>{`@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}`}</style>
+      {/* COMPLETE GUIDE / SEO CONTENT */}
+      <section style={{background:'#080a06',padding:'3.5rem 1.5rem'}}>
+        <div style={{maxWidth:'900px',margin:'0 auto'}}>
+          <div style={{borderBottom:'1px solid #1e2818',paddingBottom:'2.5rem',marginBottom:'2.5rem'}}>
+            <p style={{color:'#d4a017',fontSize:'0.62rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.4em',margin:'0 0 0.75rem'}}>📖 THE COMPLETE GUIDE</p>
+            <h2 style={{fontSize:'clamp(1.5rem,3.5vw,2.5rem)',fontFamily:'Cinzel, Georgia, serif',fontWeight:900,margin:'0 0 1.5rem',lineHeight:1.2}}>
+              The Most Advanced Hunger Games Simulator Online
+            </h2>
+            <p style={{color:'#a09880',lineHeight:1.9,marginBottom:'1.25rem',fontSize:'0.95rem'}}>
+              Hunger Games Simulator is the internet&apos;s most detailed simulator for Suzanne Collins&apos; world of Panem. Whether you&apos;re a devoted fan of the original trilogy, fascinated by the <strong style={{color:'#e8e0d0'}}>Ballad of Songbirds &amp; Snakes</strong> prequel, or just love running &quot;what if&quot; scenarios, our platform brings every tribute, district, and arena to life with an unprecedented level of detail.
+            </p>
+            <p style={{color:'#a09880',lineHeight:1.9,marginBottom:'1.25rem',fontSize:'0.95rem'}}>
+              Our simulation engine assigns each of the <strong style={{color:'#e8e0d0'}}>{tributes.length} tributes</strong> eight core stats — <strong style={{color:'#d4a017'}}>strength, agility, survival, intelligence, charisma, stealth, weapon skill, and alliance loyalty</strong>. Every Games plays out differently because the engine combines these stats with controlled randomness, so no two simulations are ever identical. The Cornucopia bloodbath, mid-game alliances, betrayals, arena hazards, and the final showdown all unfold dynamically.
+            </p>
+            <p style={{color:'#a09880',lineHeight:1.9,fontSize:'0.95rem'}}>
+              From <strong style={{color:'#e8e0d0'}}>Katniss Everdeen</strong> and the 74th Games to the deadly clockwork arena of the 75th Quarter Quell, you can run any official edition or build a fully custom roster. Pit Katniss against Finnick, see if Foxface can outlast the Career pack, or check live victory odds before the cannons fire.
+            </p>
+          </div>
+
+          {/* HOW IT WORKS */}
+          <div style={{marginBottom:'2.5rem'}}>
+            <h2 style={{fontSize:'clamp(1.4rem,3vw,2.25rem)',fontFamily:'Cinzel, Georgia, serif',fontWeight:900,margin:'0 0 1.75rem'}}>How the Simulator Works</h2>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(240px,1fr))',gap:'1rem'}}>
+              {[
+                {n:'1',icon:'⚔️',t:'Choose Your Games',d:'Pick an official edition — the 74th Games, 75th Quarter Quell, or 50th Games — or build a custom arena with any combination of tributes.'},
+                {n:'2',icon:'👤',t:'Select Tributes',d:'Each tribute carries eight unique stats drawn from their canon background. Careers dominate combat; underdogs survive on stealth and smarts.'},
+                {n:'3',icon:'🎬',t:'Run the Simulation',d:'Watch the Games unfold day by day — Cornucopia bloodbath, alliances, betrayals, arena hazards, and sponsor gifts all play out dynamically.'},
+                {n:'4',icon:'🏆',t:'Crown the Victor',d:'One tribute survives. Review the full death log, kill leader, and popularity rankings — then run it again for a completely different outcome.'},
+              ].map(step => (
+                <div key={step.n} style={{background:'#0d1009',border:'1px solid #1e2818',borderRadius:'10px',padding:'1.25rem',position:'relative'}}>
+                  <div style={{position:'absolute',top:'1rem',right:'1rem',fontSize:'1.75rem',fontFamily:'Cinzel, serif',fontWeight:900,color:'rgba(212,160,23,0.15)'}}>{step.n}</div>
+                  <div style={{fontSize:'1.75rem',marginBottom:'0.75rem'}}>{step.icon}</div>
+                  <h3 style={{fontSize:'1rem',fontFamily:'Cinzel, serif',fontWeight:700,color:'#e8e0d0',margin:'0 0 0.5rem'}}>{step.t}</h3>
+                  <p style={{fontSize:'0.82rem',color:'#a09880',lineHeight:1.7,margin:0}}>{step.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* STAT EXPLAINER */}
+          <div style={{marginBottom:'2.5rem',background:'rgba(212,160,23,0.04)',border:'1px solid rgba(212,160,23,0.15)',borderRadius:'12px',padding:'1.75rem'}}>
+            <h2 style={{fontSize:'clamp(1.3rem,3vw,2rem)',fontFamily:'Cinzel, Georgia, serif',fontWeight:900,margin:'0 0 1.25rem'}}>Understanding the Eight Tribute Stats</h2>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(220px,1fr))',gap:'0.875rem'}}>
+              {[
+                ['💪','Strength','Raw physical power. Decides close-quarters combat and the Cornucopia bloodbath.','#e87070'],
+                ['⚡','Agility','Speed and reflexes. Helps tributes dodge attacks and escape arena hazards.','#70c870'],
+                ['🌿','Survival','Living off the land — food, water, shelter. The single most important long-game stat.','#70a0e8'],
+                ['🧠','Intelligence','Strategy and problem-solving. Powers traps, alliances, and reading the arena.','#c070e8'],
+                ['✨','Charisma','Sponsor appeal. High-charisma tributes receive life-saving gifts mid-Games.','#e8a8d0'],
+                ['👁️','Stealth','Staying hidden. Lets tributes avoid the bloodbath and pick their moments.','#5a8b6a'],
+                ['⚔️','Weapon Skill','Mastery of a chosen weapon. The biggest multiplier in any direct fight.','#d4a017'],
+                ['🤝','Alliance Loyalty','How dependable a tribute is. Low loyalty means betrayal is always coming.','#70c8c8'],
+              ].map(([icon,name,desc,color]) => (
+                <div key={name as string} style={{display:'flex',gap:'0.75rem',alignItems:'flex-start'}}>
+                  <span style={{fontSize:'1.25rem',flexShrink:0}}>{icon}</span>
+                  <div>
+                    <h3 style={{fontSize:'0.85rem',fontFamily:'Cinzel, serif',fontWeight:700,color:color as string,margin:'0 0 0.2rem'}}>{name}</h3>
+                    <p style={{fontSize:'0.75rem',color:'#a09880',lineHeight:1.6,margin:0}}>{desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* FAQ */}
+          <div>
+            <h2 style={{fontSize:'clamp(1.4rem,3vw,2.25rem)',fontFamily:'Cinzel, Georgia, serif',fontWeight:900,margin:'0 0 1.75rem'}}>Frequently Asked Questions</h2>
+            <div style={{display:'flex',flexDirection:'column',gap:'0.75rem'}}>
+              {HOME_FAQS.map((faq, i) => (
+                <details key={i} style={{background:'#0d1009',border:'1px solid #1e2818',borderRadius:'8px',overflow:'hidden'}}>
+                  <summary style={{padding:'1.1rem 1.25rem',cursor:'pointer',fontFamily:'Cinzel, serif',fontWeight:700,fontSize:'0.95rem',color:'#e8e0d0',listStyle:'none',display:'flex',justifyContent:'space-between',alignItems:'center',gap:'1rem'}}>
+                    {faq.q}
+                    <span style={{color:'#d4a017',fontSize:'1.3rem',flexShrink:0}}>+</span>
+                  </summary>
+                  <div style={{padding:'0 1.25rem 1.25rem',color:'#a09880',lineHeight:1.8,fontSize:'0.88rem'}}>
+                    {faq.a}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>{`@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}} details summary::-webkit-details-marker{display:none;}`}</style>
     </>
   );
 }
+
+const HOME_FAQS = [
+  { q: 'What is the Hunger Games Simulator?', a: 'It is a free interactive tool that lets you run complete Hunger Games simulations. You pick the tributes and arena, and our engine plays out the entire Games day by day — from the Cornucopia bloodbath to the final victor — using each tribute\u2019s eight core stats combined with realistic randomness.' },
+  { q: 'How many tributes and districts are included?', a: `The simulator includes ${tributes.length} fully detailed tributes from across the entire Hunger Games saga, spanning all 13 districts plus the Capitol. This covers the original trilogy, the Ballad of Songbirds & Snakes prequel, and key rebellion-era characters, each with canon-based stats, weapons, and strategies.` },
+  { q: 'Is the Hunger Games Simulator free to use?', a: 'Yes, completely free. Every feature — the full game simulator, the 1v1 fight simulator, the odds calculator, the quiz, and all tribute and district profiles — is available with no account, no signup, and no payment required.' },
+  { q: 'How are victory odds calculated?', a: 'Victory odds are derived from a weighted formula: weapon skill and survival each count for 20%, while strength, agility, intelligence, and stealth each contribute 15%. Within any selected pool of tributes, all odds are normalized so they add up to exactly 100%.' },
+  { q: 'Can I create my own custom Games?', a: 'Absolutely. Choose the Custom Games option in the simulator and build any roster you like — mix victors with reaped tributes, set Katniss against Finnick, or assemble an all-Career bloodbath. The engine adapts to whatever combination you choose.' },
+  { q: 'Are the simulation results always the same?', a: 'No. The engine layers controlled randomness on top of each tribute\u2019s stats, so the same roster can produce a different victor, different alliances, and different deaths every single run. Stronger tributes win more often, but upsets happen — just like in the real Games.' },
+  { q: 'Is this an official Hunger Games product?', a: 'No. This is an independent fan-made project created for entertainment. The Hunger Games is the intellectual property of Suzanne Collins, Scholastic, and Lionsgate. This site is not affiliated with or endorsed by any of them.' },
+];
 
 function GameImage({ game }: { game: typeof hungerGames[0] }) {
   const [err, setErr] = useState(false);
