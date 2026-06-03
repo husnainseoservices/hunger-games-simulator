@@ -1,0 +1,18 @@
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgcap" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a017;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#1a1200;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="300" fill="url(#bgcap)"/>
+  <pattern id="gridcap" width="30" height="30" patternUnits="userSpaceOnUse">
+    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(212,160,23,0.08)" stroke-width="1"/>
+  </pattern>
+  <rect width="600" height="300" fill="url(#gridcap)"/>
+  <rect x="0" y="0" width="4" height="300" fill="#d4a017" opacity="0.9"/>
+  <text x="300" y="155" font-size="100" text-anchor="middle" fill="rgba(255,255,255,0.06)">🏛️</text>
+  <text x="30" y="40" font-family="Georgia,serif" font-size="12" fill="rgba(212,160,23,0.8)" letter-spacing="3">GOVERNANCE & LUXURY</text>
+  <text x="30" y="90" font-family="Georgia,serif" font-size="42" font-weight="900" fill="#e8e0d0">The Capitol</text>
+  <text x="30" y="115" font-family="Arial,sans-serif" font-size="14" fill="rgba(255,255,255,0.4)" letter-spacing="2">HUNGER GAMES SIMULATOR</text>
+</svg>
