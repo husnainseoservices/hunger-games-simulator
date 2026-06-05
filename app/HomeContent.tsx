@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { tributes, calculateVictoryOdds } from '@/data/tributes';
 import { districts } from '@/data/districts';
 import { hungerGames } from '@/data/games';
+import TributeAvatar from '@/components/TributeAvatar';
 
 const topTributes = [...tributes].sort((a,b) => {
   const s = (t: typeof tributes[0]) => t.stats.strength*0.15+t.stats.agility*0.15+t.stats.survival*0.2+t.stats.intelligence*0.15+t.stats.weaponSkill*0.2+t.stats.stealth*0.15;
@@ -90,7 +91,7 @@ export default function HomePage() {
               {odds.map(({tribute:t, odds:o}, i) => (
                 <Link key={t.id} href={`/tributes/${t.id}`} style={{display:'flex',alignItems:'center',gap:'0.75rem',padding:'0.6rem 0',borderBottom:'1px solid rgba(255,255,255,0.03)',textDecoration:'none'}}>
                   <span style={{fontSize:'0.7rem',color:'#5a5448',fontFamily:'Cinzel, serif',width:'20px',flexShrink:0}}>#{i+1}</span>
-                  <div style={{width:32,height:32,borderRadius:'50%',background:`linear-gradient(135deg,#d4a017,#8b6914)`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'0.85rem',fontWeight:900,color:'#080a06',fontFamily:'Cinzel, serif',flexShrink:0}}>{t.name.charAt(0)}</div>
+                  <TributeAvatar src={t.image} name={t.name} size={32} />
                   <div style={{flex:1,minWidth:0}}>
                     <p style={{fontSize:'0.85rem',fontFamily:'Cinzel, serif',fontWeight:700,color:'#e8e0d0',margin:0,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{t.name}</p>
                     <p style={{fontSize:'0.6rem',color:'#5a5448',margin:0}}>D{t.districtNumber} · {t.background}</p>
@@ -177,9 +178,7 @@ export default function HomePage() {
                   <div style={{background:'#0d1009',border:`1px solid ${hoveredTribute===t.id?'rgba(212,160,23,0.35)':'#1e2818'}`,borderRadius:'10px',padding:'1rem',textAlign:'center',cursor:'pointer',transition:'all 0.2s',transform:hoveredTribute===t.id?'translateY(-4px)':'none'}}
                     onMouseEnter={()=>setHoveredTribute(t.id)} onMouseLeave={()=>setHoveredTribute(null)}>
                     <div style={{position:'relative',display:'inline-block',marginBottom:'0.75rem'}}>
-                      <div style={{width:56,height:56,borderRadius:'50%',background:`linear-gradient(135deg,#d4a017,#8b6914)`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.4rem',fontWeight:900,color:'#080a06',fontFamily:'Cinzel, serif',margin:'0 auto'}}>
-                        {t.name.charAt(0)}
-                      </div>
+                      <TributeAvatar src={t.image} name={t.name} size={56} fontSize="1.4rem" />
                       <span style={{position:'absolute',top:-4,right:-4,width:20,height:20,borderRadius:'50%',background:'#080a06',border:'1px solid rgba(212,160,23,0.3)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'0.6rem',color:'#d4a017',fontFamily:'Cinzel, serif',fontWeight:700}}>{i+1}</span>
                     </div>
                     <h3 style={{fontSize:'0.9rem',fontFamily:'Cinzel, serif',fontWeight:700,color:'#e8e0d0',margin:'0 0 0.2rem'}}>{t.name}</h3>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { tributes } from '@/data/tributes';
 import { simulateFight } from '@/lib/simulation-engine';
 import { Tribute } from '@/types';
+import TributeAvatar from '@/components/TributeAvatar';
 
 type FightType = 'combat' | 'survival' | 'trap' | 'hazard';
 const FIGHT_TYPES = [
@@ -20,7 +21,7 @@ const MATCHUPS = [
 ];
 
 function Avatar({ t, size=48 }: { t: Tribute; size?: number }) {
-  return <div style={{width:size,height:size,borderRadius:'50%',background:'linear-gradient(135deg,#d4a017,#8b6914)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:size*0.38,fontWeight:900,color:'#0a0c06',fontFamily:'Cinzel, serif',flexShrink:0}}>{t.name.charAt(0)}</div>;
+  return <TributeAvatar src={t.image} name={t.name} size={size} fontSize={`${size*0.38}px`} />;
 }
 
 export default function FightPage() {
@@ -102,7 +103,7 @@ export default function FightPage() {
                 <div style={{display:'flex',flexDirection:'column',gap:'0.3rem',maxHeight:'240px',overflowY:'auto'}}>
                   {fl1.map(t => (
                     <button key={t.id} onClick={() => {setF1(t);setS1('');setResult(null);}} style={{background:'transparent',border:'1px solid #1e2818',borderRadius:'5px',padding:'0.5rem 0.75rem',cursor:'pointer',textAlign:'left',display:'flex',alignItems:'center',gap:'0.5rem'}}>
-                      <div style={{width:26,height:26,borderRadius:'50%',background:'linear-gradient(135deg,#d4a017,#8b6914)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'0.65rem',fontWeight:900,color:'#0a0c06',flexShrink:0}}>{t.name.charAt(0)}</div>
+                      <TributeAvatar src={t.image} name={t.name} size={26} fontSize="0.65rem" />
                       <div><p style={{fontSize:'0.8rem',color:'#e8e0d0',fontWeight:600,margin:0}}>{t.name}</p><p style={{fontSize:'0.62rem',color:'#5a5448',margin:0}}>D{t.districtNumber} · {t.background}</p></div>
                     </button>
                   ))}
@@ -144,7 +145,7 @@ export default function FightPage() {
                 <div style={{display:'flex',flexDirection:'column',gap:'0.3rem',maxHeight:'240px',overflowY:'auto'}}>
                   {fl2.map(t => (
                     <button key={t.id} onClick={() => {setF2(t);setS2('');setResult(null);}} style={{background:'transparent',border:'1px solid #1e2818',borderRadius:'5px',padding:'0.5rem 0.75rem',cursor:'pointer',textAlign:'left',display:'flex',alignItems:'center',gap:'0.5rem'}}>
-                      <div style={{width:26,height:26,borderRadius:'50%',background:'linear-gradient(135deg,#8b1a1a,#c0362b)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'0.65rem',fontWeight:900,color:'#fff',flexShrink:0}}>{t.name.charAt(0)}</div>
+                      <TributeAvatar src={t.image} name={t.name} size={26} fontSize="0.65rem" />
                       <div><p style={{fontSize:'0.8rem',color:'#e8e0d0',fontWeight:600,margin:0}}>{t.name}</p><p style={{fontSize:'0.62rem',color:'#5a5448',margin:0}}>D{t.districtNumber} · {t.background}</p></div>
                     </button>
                   ))}

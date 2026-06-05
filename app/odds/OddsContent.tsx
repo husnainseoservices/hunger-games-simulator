@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { tributes, calculateVictoryOdds } from '@/data/tributes';
 import { Tribute } from '@/types';
+import TributeAvatar from '@/components/TributeAvatar';
 
 type SortKey = 'odds'|'strength'|'survival'|'weaponSkill'|'stealth'|'intelligence'|'agility';
 
@@ -119,7 +120,7 @@ export default function OddsPage() {
                       <Link key={d.tribute.id} href={`/tributes/${d.tribute.id}`} style={{textDecoration:'none'}}>
                         <div style={{background:rank===1?'rgba(212,160,23,0.08)':'rgba(255,255,255,0.02)',border:`1px solid ${rank===1?'rgba(212,160,23,0.4)':'#1e2818'}`,borderRadius:'10px',padding:'1rem',textAlign:'center',height:heights[i],display:'flex',flexDirection:'column',justifyContent:'center',boxSizing:'border-box',cursor:'pointer'}}>
                           <div style={{fontSize:'1.2rem',marginBottom:'0.3rem'}}>{medals[i]}</div>
-                          <div style={{width:36,height:36,borderRadius:'50%',background:'linear-gradient(135deg,#d4a017,#8b6914)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'0.9rem',fontWeight:900,color:'#080a06',fontFamily:'Cinzel, serif',margin:'0 auto 0.4rem'}}>{d.tribute.name.charAt(0)}</div>
+                          <div style={{margin:'0 auto 0.4rem',display:'flex',justifyContent:'center'}}><TributeAvatar src={d.tribute.image} name={d.tribute.name} size={36} fontSize="0.9rem" /></div>
                           <p style={{fontSize:'0.8rem',fontFamily:'Cinzel, serif',fontWeight:700,color:rank===1?'#d4a017':'#e8e0d0',margin:'0 0 0.1rem'}}>{d.tribute.name.split(' ')[0]}</p>
                           <p style={{fontSize:'0.6rem',color:'#5a5448',margin:'0 0 0.3rem'}}>D{d.tribute.districtNumber}</p>
                           <p style={{fontSize:'1.1rem',fontWeight:700,color:'#d4a017',margin:0,fontFamily:'Cinzel, serif'}}>{d.odds}%</p>
@@ -195,7 +196,7 @@ export default function OddsPage() {
             {leader && (
               <div style={{background:'linear-gradient(135deg,rgba(212,160,23,0.1),rgba(139,26,26,0.05))',border:'1px solid rgba(212,160,23,0.3)',borderRadius:'10px',padding:'1.25rem',marginBottom:'1rem',textAlign:'center'}}>
                 <p style={{fontSize:'0.58rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.2em',color:'#d4a017',margin:'0 0 0.6rem'}}>CAPITOL FAVOURITE</p>
-                <div style={{width:56,height:56,borderRadius:'50%',background:'linear-gradient(135deg,#d4a017,#8b6914)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.4rem',fontWeight:900,color:'#080a06',fontFamily:'Cinzel, serif',margin:'0 auto 0.6rem'}}>{leader.tribute.name.charAt(0)}</div>
+                <div style={{margin:'0 auto 0.6rem',display:'flex',justifyContent:'center'}}><TributeAvatar src={leader.tribute.image} name={leader.tribute.name} size={56} fontSize="1.4rem" /></div>
                 <h3 style={{fontSize:'1.1rem',fontFamily:'Cinzel, serif',fontWeight:900,color:'#d4a017',margin:'0 0 0.2rem'}}>{leader.tribute.name}</h3>
                 <p style={{fontSize:'0.68rem',color:'#5a5448',margin:'0 0 0.75rem'}}>D{leader.tribute.districtNumber} · {leader.tribute.background}</p>
                 <div style={{fontSize:'2rem',fontFamily:'Cinzel, serif',fontWeight:900,color:'#d4a017',margin:'0 0 0.2rem'}}>{leader.odds}%</div>
