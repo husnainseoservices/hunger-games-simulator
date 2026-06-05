@@ -1,4 +1,11 @@
 import Link from 'next/link';
+
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'About — Hunger Games Simulator',
+  description: 'Learn about the Hunger Games Simulator, the most advanced fan-made simulation tool for Suzanne Collins’ world of Panem.',
+  alternates: { canonical: '/about' },
+};
 export default function AboutPage() {
   return (
     <div style={{maxWidth:'800px',margin:'0 auto',padding:'2rem 1rem'}}>

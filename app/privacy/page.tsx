@@ -1,4 +1,11 @@
 import Link from 'next/link';
+
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'Privacy Policy — Hunger Games Simulator',
+  description: 'Privacy policy for the Hunger Games Simulator. We collect no personal data and require no account to use any feature.',
+  alternates: { canonical: '/privacy' },
+};
 export default function PrivacyPage() {
   return (
     <div style={{maxWidth:'800px',margin:'0 auto',padding:'2rem 1rem'}}>

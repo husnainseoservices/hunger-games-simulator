@@ -22,13 +22,18 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html { overflow-x: hidden; max-width: 100%; }
+
 body {
   background-color: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  max-width: 100%;
 }
+
+img, svg, video { max-width: 100%; height: auto; }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }

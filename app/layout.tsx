@@ -5,7 +5,7 @@ import MobileNav from '@/components/layout/MobileNav';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://hungergamessimulator.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://hungergamessimulators.com'),
   title: { default: 'Hunger Games Simulator — Run the Games, Predict the Victor', template: '%s | Hunger Games Simulator' },
   description: 'The most advanced Hunger Games simulator. Simulate the 74th Games, Quarter Quell, and custom arenas. Full tribute stats, 1v1 fights, odds calculator, and Hunger Games quiz.',
   keywords: ['hunger games simulator', 'katniss everdeen', 'hunger games quiz', 'tribute simulator', 'panem simulator', 'hunger games odds'],
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true },
   icons: { icon: '/favicon.ico' },
+  verification: { google: 'mshfjsiZulqKEtHdlYgw5lsVFCbP4oic22wRcwwktl0' },
   alternates: { canonical: '/' },
   authors: [{ name: 'Hunger Games Simulator' }],
   category: 'Entertainment',

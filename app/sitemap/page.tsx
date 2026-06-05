@@ -1,4 +1,11 @@
 import Link from 'next/link';
+
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
+  title: 'Sitemap — Hunger Games Simulator',
+  description: 'Full sitemap of the Hunger Games Simulator. Browse all simulator tools, tribute profiles, district guides, and blog content.',
+  alternates: { canonical: '/sitemap' },
+};
 const PAGES = [
   {section:'Simulator',links:[{href:'/simulator',label:'Full Game Simulator'},{href:'/fight',label:'1v1 Fight Simulator'},{href:'/odds',label:'Odds Calculator'},{href:'/quiz',label:'Hunger Games Quiz'}]},
   {section:'Browse',links:[{href:'/tributes',label:'All Tributes'},{href:'/districts',label:'Districts of Panem'},{href:'/leaderboard',label:'Victor Leaderboard'},{href:'/blog',label:'Blog & Guides'}]},
