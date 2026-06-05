@@ -3,6 +3,7 @@ import { use } from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { tributes, getTributeById, calculateVictoryOdds } from '@/data/tributes';
+import TributeAvatar from '@/components/TributeAvatar';
 
 const STAT_LABELS: Record<string,[string,string]> = {
   strength: ['Strength','💪'], agility: ['Agility','⚡'], survival: ['Survival','🌿'],
@@ -39,7 +40,7 @@ export default function TributePage({ params }: { params: Promise<{ id: string }
         {/* Hero */}
         <div style={{background:'linear-gradient(135deg, rgba(212,160,23,0.1), rgba(139,26,26,0.06))',border:'1px solid rgba(212,160,23,0.25)',borderRadius:'14px',padding:'1.75rem',marginBottom:'1.5rem'}}>
           <div style={{display:'flex',gap:'1.5rem',alignItems:'flex-start',flexWrap:'wrap'}}>
-            <div style={{width:88,height:88,borderRadius:'50%',background:'linear-gradient(135deg,#d4a017,#8b6914)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'2.2rem',fontWeight:900,color:'#0a0c06',fontFamily:'Cinzel, serif',flexShrink:0,boxShadow:'0 0 30px rgba(212,160,23,0.3)'}}>{t.name.charAt(0)}</div>
+            <TributeAvatar src={t.image} name={t.name} size={88} fontSize="2.2rem" />
             <div style={{flex:1,minWidth:'200px'}}>
               <div style={{display:'flex',gap:'0.5rem',marginBottom:'0.5rem',flexWrap:'wrap'}}>
                 <span style={{fontSize:'0.6rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.15em',color:BG_COLORS[t.background]||'#a09880',background:`${BG_COLORS[t.background]||'#a09880'}18`,border:`1px solid ${BG_COLORS[t.background]||'#a09880'}44`,padding:'0.2rem 0.6rem',borderRadius:'2px'}}>{t.background.toUpperCase()}</span>

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { tributes } from '@/data/tributes';
+import TributeAvatar from '@/components/TributeAvatar';
 
 const STATS = ['strength','agility','survival','intelligence','weaponSkill','stealth','charisma'] as const;
 const BG_COLORS: Record<string,string> = { Career:'#d4a017', Victor:'#c070e8', Volunteer:'#70c870', Reaped:'#e87070', Capitol:'#70a0e8' };
@@ -57,7 +58,7 @@ export default function TributesPage() {
               <Link key={t.id} href={`/tributes/${t.id}`} style={{textDecoration:'none'}}>
                 <div style={{background:'#0d1009',border:'1px solid #1e2818',borderRadius:'10px',padding:'1.25rem',height:'100%',cursor:'pointer'}}>
                   <div style={{display:'flex',alignItems:'center',gap:'0.875rem',marginBottom:'1rem'}}>
-                    <div style={{width:48,height:48,borderRadius:'50%',background:'linear-gradient(135deg,#d4a017,#8b6914)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.2rem',fontWeight:900,color:'#0a0c06',fontFamily:'Cinzel, serif',flexShrink:0}}>{t.name.charAt(0)}</div>
+                    <TributeAvatar src={t.image} name={t.name} size={48} />
                     <div style={{flex:1,minWidth:0}}>
                       <h3 style={{fontSize:'0.95rem',fontFamily:'Cinzel, serif',fontWeight:700,color:'#e8e0d0',margin:0,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>{t.name}</h3>
                       {t.nickname && <p style={{fontSize:'0.65rem',color:'#d4a017',margin:'0.1rem 0 0',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>"{t.nickname}"</p>}
