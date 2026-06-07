@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { tributes, calculateVictoryOdds } from '@/data/tributes';
+import TributeAvatar from '@/components/TributeAvatar';
 
 type StatKey = 'odds'|'strength'|'agility'|'survival'|'intelligence'|'weaponSkill'|'stealth'|'charisma';
 const CATS: {key:StatKey;label:string;icon:string;color:string}[] = [
@@ -77,7 +78,7 @@ export default function LeaderboardPage() {
               <Link key={t.id} href={`/tributes/${t.id}`} style={{textDecoration:'none'}}>
                 <div style={{background:rank===1?`${cat.color}12`:'rgba(255,255,255,0.02)',border:`1px solid ${rank===1?`${cat.color}44`:'#1e2818'}`,borderRadius:'12px',padding:'1.25rem',textAlign:'center',height:sizes[i],display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',boxSizing:'border-box',cursor:'pointer'}}>
                   <div style={{fontSize:'1.5rem',marginBottom:'0.3rem'}}>{medals[i]}</div>
-                  <div style={{width:44,height:44,borderRadius:'50%',background:'linear-gradient(135deg,#d4a017,#8b6914)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.1rem',fontWeight:900,color:'#0a0c06',marginBottom:'0.5rem',fontFamily:'Cinzel, serif'}}>{t.name.charAt(0)}</div>
+                  <div style={{marginBottom:'0.5rem',display:'flex',justifyContent:'center'}}><TributeAvatar src={t.image} name={t.name} size={44} fontSize="1.1rem" /></div>
                   <p style={{fontSize:'0.9rem',fontFamily:'Cinzel, serif',fontWeight:700,color:rank===1?cat.color:'#e8e0d0',margin:'0 0 0.1rem'}}>{t.name}</p>
                   <p style={{fontSize:'0.62rem',color:'#5a5448',margin:'0 0 0.3rem'}}>D{t.districtNumber}</p>
                   <p style={{fontSize:'1.3rem',fontWeight:700,color:cat.color,margin:0}}>{getValue(t)}</p>
