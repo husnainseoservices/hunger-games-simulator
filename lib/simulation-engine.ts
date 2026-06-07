@@ -12,6 +12,36 @@ const ALLIANCE_EVENTS = ['{t1} and {t2} form an unlikely but powerful alliance.'
 const SPONSOR_EVENTS = ['{t} receives medicine from a Capitol sponsor — a crucial lifeline.', 'A sponsor parachute delivers food and water to {t}.', '{t} receives a weapon upgrade from an anonymous sponsor.', 'Capitol sponsors send {t} burn cream after a fire encounter.'];
 const FEAST_EVENTS = ['The Gamemakers announce a feast at the Cornucopia — all tributes converge.', 'A backpack containing something each tribute desperately needs appears at the Cornucopia.'];
 
+// ===== CUSTOM EVENTS =====
+// Users can register their own event templates that get mixed into the simulation.
+// Placeholders: {w}/{l} for combat winner/loser, {d} for a death victim,
+// {t1}/{t2} for two allied tributes, {t} for a single tribute.
+export interface CustomEvent {
+  type: EventType;
+  template: string;
+  fatal: boolean;
+}
+
+let customEvents: CustomEvent[] = [];
+
+export function setCustomEvents(events: CustomEvent[]) {
+  customEvents = events || [];
+}
+
+export function getCustomEvents(): CustomEvent[] {
+  return customEvents;
+}
+
+function customByType(type: EventType): string[] {
+  return customEvents.filter(e => e.type === type).map(e => e.template);
+}
+
+// Returns built-in templates plus any custom ones of the same type
+function pool(builtIn: string[], type: EventType): string[] {
+  const custom = customByType(type);
+  return custom.length ? [...builtIn, ...custom] : builtIn;
+}
+
 function rand<T>(arr: T[]): T { return arr[Math.floor(Math.random() * arr.length)]; }
 function randInt(min: number, max: number): number { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
@@ -52,7 +82,7 @@ function generateCornucopiaDay(tributes: Tribute[]): { day: GameDay; survivors: 
     events.push({
       id: `cornucopia-${i}`, day: 1, type: 'cornucopia', participants: [winner.id, loser.id],
       deaths: [loser.id], dramaScore: randInt(70, 95),
-      description: rand(COMBAT_EVENTS).replace('{w}', winner.name).replace('{l}', loser.name),
+      description: rand(pool(COMBAT_EVENTS, 'combat')).replace('{w}', winner.name).replace('{l}', loser.name),
     });
   }
 
@@ -92,7 +122,7 @@ function generateArenaDay(day: number, survivors: Tribute[], allTributes: Tribut
       if (shouldDie) {
         deaths.push(loser.id);
         currentSurvivors.splice(currentSurvivors.findIndex(s => s.id === loser.id), 1);
-        events.push({ id: `combat-${day}-${i}`, day, type: 'combat', participants: [winner.id, loser.id], deaths: [loser.id], dramaScore: randInt(60, 90), description: rand(COMBAT_EVENTS).replace('{w}', winner.name).replace('{l}', loser.name) });
+        events.push({ id: `combat-${day}-${i}`, day, type: 'combat', participants: [winner.id, loser.id], deaths: [loser.id], dramaScore: randInt(60, 90), description: rand(pool(COMBAT_EVENTS, 'combat')).replace('{w}', winner.name).replace('{l}', loser.name) });
       }
     } else if (roll < 0.5) {
       // Hazard death
@@ -101,7 +131,7 @@ function generateArenaDay(day: number, survivors: Tribute[], allTributes: Tribut
       if (hazardScore < 65 || (currentSurvivors.length > 3 && Math.random() < 0.4)) {
         deaths.push(victim.id);
         currentSurvivors.splice(currentSurvivors.findIndex(s => s.id === victim.id), 1);
-        events.push({ id: `hazard-${day}-${i}`, day, type: 'hazard', participants: [victim.id], deaths: [victim.id], dramaScore: randInt(50, 80), description: rand(HAZARD_EVENTS).replace(/{d}/g, victim.name) });
+        events.push({ id: `hazard-${day}-${i}`, day, type: 'hazard', participants: [victim.id], deaths: [victim.id], dramaScore: randInt(50, 80), description: rand(pool(HAZARD_EVENTS, 'hazard')).replace(/{d}/g, victim.name) });
       }
     } else if (roll < 0.65 && currentSurvivors.length >= 2) {
       // Alliance
@@ -109,12 +139,12 @@ function generateArenaDay(day: number, survivors: Tribute[], allTributes: Tribut
       const others = currentSurvivors.filter(t => t.id !== t1.id);
       const t2 = rand(others);
       const isBetray = Math.random() < 0.3 && day > 3;
-      events.push({ id: `alliance-${day}-${i}`, day, type: 'alliance', participants: [t1.id, t2.id], deaths: [], dramaScore: randInt(40, 75), description: rand(ALLIANCE_EVENTS).replace('{t1}', t1.name).replace('{t2}', t2.name) });
+      events.push({ id: `alliance-${day}-${i}`, day, type: 'alliance', participants: [t1.id, t2.id], deaths: [], dramaScore: randInt(40, 75), description: rand(pool(ALLIANCE_EVENTS, 'alliance')).replace('{t1}', t1.name).replace('{t2}', t2.name) });
     } else {
       // Survival / sponsor
       const t = rand(currentSurvivors);
       const type = Math.random() < 0.5 ? 'survival' : 'sponsor';
-      const templates = type === 'survival' ? SURVIVAL_EVENTS : SPONSOR_EVENTS;
+      const templates = type === 'survival' ? pool(SURVIVAL_EVENTS, 'survival') : pool(SPONSOR_EVENTS, 'sponsor');
       events.push({ id: `${type}-${day}-${i}`, day, type, participants: [t.id], deaths: [], dramaScore: randInt(20, 50), description: rand(templates).replace(/{t}/g, t.name) });
     }
   }
@@ -187,7 +217,7 @@ export function simulateFight(t1: Tribute, t2: Tribute, type: EventType = 'comba
     winnerScore: Math.round(Math.max(s1, s2)),
     loserScore: Math.round(Math.min(s1, s2)),
     margin, drama,
-    description: rand(COMBAT_EVENTS).replace('{w}', winner.name).replace('{l}', loser.name),
+    description: rand(pool(COMBAT_EVENTS, 'combat')).replace('{w}', winner.name).replace('{l}', loser.name),
     breakdown: getBreakdown(t1, t2, type),
   };
 }

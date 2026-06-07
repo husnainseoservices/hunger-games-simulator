@@ -3,10 +3,19 @@ import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import { hungerGames } from '@/data/games';
 import { tributes, getTributeById } from '@/data/tributes';
-import { simulateGame } from '@/lib/simulation-engine';
+import { simulateGame, setCustomEvents, type CustomEvent } from '@/lib/simulation-engine';
 import { SimulationResult } from '@/types';
 
 type Phase = 'select' | 'running' | 'results';
+type CustomEventType = 'combat' | 'survival' | 'hazard' | 'alliance' | 'sponsor';
+
+const EVENT_TYPE_INFO: Record<CustomEventType, { label: string; icon: string; color: string; placeholder: string; hint: string; fatal: boolean }> = {
+  combat:   { label: 'Combat',   icon: '⚔️', color: '#e87070', placeholder: '{w} corners {l} in a ravine and wins the duel.', hint: 'Use {w} for the winner and {l} for the loser. Fatal.', fatal: true },
+  hazard:   { label: 'Hazard',   icon: '🔥', color: '#e8a030', placeholder: '{d} is swept away by a sudden Gamemaker flood.', hint: 'Use {d} for the tribute who dies. Fatal.', fatal: true },
+  alliance: { label: 'Alliance', icon: '🤝', color: '#70a0e8', placeholder: '{t1} and {t2} share a quiet meal and swear loyalty.', hint: 'Use {t1} and {t2} for the two allies. Non-fatal.', fatal: false },
+  survival: { label: 'Survival', icon: '🌿', color: '#70c870', placeholder: '{t} discovers a hidden spring and refills supplies.', hint: 'Use {t} for the tribute. Non-fatal.', fatal: false },
+  sponsor:  { label: 'Sponsor',  icon: '🎁', color: '#d4a017', placeholder: '{t} receives a mysterious silver parachute at dawn.', hint: 'Use {t} for the tribute. Non-fatal.', fatal: false },
+};
 
 export default function SimulatorPage() {
   const [selectedGame, setSelectedGame] = useState('');
@@ -17,12 +26,17 @@ export default function SimulatorPage() {
   const [activeDay, setActiveDay] = useState(0);
   const [showDayList, setShowDayList] = useState(false);
   const [progressMsg, setProgressMsg] = useState('');
+  const [userEvents, setUserEvents] = useState<CustomEvent[]>([]);
+  const [showEventBuilder, setShowEventBuilder] = useState(false);
+  const [newEventType, setNewEventType] = useState<CustomEventType>('combat');
+  const [newEventText, setNewEventText] = useState('');
 
   const selectedGameData = hungerGames.find(g => g.id === selectedGame);
   const tributePool = selectedGame === 'custom-games' ? customTributes : (selectedGameData?.tributes || []);
 
   const handleStart = useCallback(async () => {
     if (tributePool.length < 2) return;
+    setCustomEvents(userEvents);
     setPhase('running'); setProgress(0);
     const msgs = ['Selecting tributes...','Training scores calculated...','Opening ceremonies...','The arena is set...','The countdown begins...','Let the Games begin!'];
     for (let i = 0; i <= 100; i += 2) {
@@ -32,7 +46,15 @@ export default function SimulatorPage() {
     }
     const res = simulateGame(tributePool);
     setResult(res); setActiveDay(0); setPhase('results');
-  }, [tributePool]);
+  }, [tributePool, userEvents]);
+
+  const addEvent = () => {
+    const text = newEventText.trim();
+    if (text.length < 5) return;
+    setUserEvents(prev => [...prev, { type: newEventType, template: text, fatal: EVENT_TYPE_INFO[newEventType].fatal }]);
+    setNewEventText('');
+  };
+  const removeEvent = (idx: number) => setUserEvents(prev => prev.filter((_, i) => i !== idx));
 
   const handleReset = () => { setPhase('select'); setSelectedGame(''); setResult(null); setActiveDay(0); setCustomTributes([]); };
   const toggleCustom = (id: string) => setCustomTributes(prev => prev.includes(id) ? prev.filter(t => t !== id) : prev.length < 24 ? [...prev, id] : prev);
@@ -84,6 +106,69 @@ export default function SimulatorPage() {
                 </div>
               </div>
             )}
+
+            {/* CUSTOM EVENTS */}
+            <div style={{background:'#0d1009',border:'1px solid #1e2818',borderRadius:'10px',padding:'1.25rem',marginBottom:'1.25rem'}}>
+              <button onClick={() => setShowEventBuilder(v => !v)} style={{width:'100%',background:'transparent',border:'none',cursor:'pointer',display:'flex',justifyContent:'space-between',alignItems:'center',padding:0}}>
+                <div style={{textAlign:'left'}}>
+                  <p style={{fontSize:'0.65rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.2em',color:'#d4a017',margin:'0 0 0.2rem'}}>✍️ CUSTOM EVENTS {userEvents.length > 0 && `(${userEvents.length})`}</p>
+                  <p style={{fontSize:'0.78rem',color:'#a09880',margin:0}}>Write your own arena events — they get mixed into the simulation</p>
+                </div>
+                <span style={{color:'#d4a017',fontSize:'1.3rem'}}>{showEventBuilder ? '−' : '+'}</span>
+              </button>
+
+              {showEventBuilder && (
+                <div style={{marginTop:'1.25rem',paddingTop:'1.25rem',borderTop:'1px solid #1e2818'}}>
+                  {/* Type selector */}
+                  <div style={{display:'flex',gap:'0.4rem',flexWrap:'wrap',marginBottom:'0.875rem'}}>
+                    {(Object.keys(EVENT_TYPE_INFO) as CustomEventType[]).map(type => {
+                      const info = EVENT_TYPE_INFO[type];
+                      const active = newEventType === type;
+                      return (
+                        <button key={type} onClick={() => { setNewEventType(type); setNewEventText(''); }} style={{background:active?`${info.color}18`:'transparent',border:`1px solid ${active?info.color:'#1e2818'}`,color:active?info.color:'#5a5448',padding:'0.3rem 0.7rem',borderRadius:'4px',cursor:'pointer',fontFamily:'Oswald, sans-serif',letterSpacing:'0.05em',fontSize:'0.7rem',outline:'none'}}>
+                          {info.icon} {info.label}{info.fatal ? ' ☠' : ''}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Hint */}
+                  <p style={{fontSize:'0.7rem',color:'#5a5448',margin:'0 0 0.5rem',lineHeight:1.5}}>{EVENT_TYPE_INFO[newEventType].hint}</p>
+
+                  {/* Input */}
+                  <div style={{display:'flex',gap:'0.5rem',marginBottom:'0.875rem',flexWrap:'wrap'}}>
+                    <input
+                      value={newEventText}
+                      onChange={e => setNewEventText(e.target.value)}
+                      onKeyDown={e => { if (e.key === 'Enter') addEvent(); }}
+                      placeholder={EVENT_TYPE_INFO[newEventType].placeholder}
+                      maxLength={200}
+                      style={{flex:'1 1 240px',minWidth:0,background:'#080a06',border:'1px solid #1e2818',borderRadius:'5px',padding:'0.6rem 0.75rem',color:'#e8e0d0',fontSize:'0.82rem',outline:'none'}}
+                    />
+                    <button onClick={addEvent} disabled={newEventText.trim().length < 5} style={{background:newEventText.trim().length >= 5 ? `linear-gradient(135deg,${EVENT_TYPE_INFO[newEventType].color},${EVENT_TYPE_INFO[newEventType].color}bb)` : '#1e2818',color:newEventText.trim().length >= 5 ? '#0a0c06' : '#5a5448',border:'none',borderRadius:'5px',padding:'0.6rem 1.25rem',cursor:newEventText.trim().length >= 5 ? 'pointer' : 'not-allowed',fontFamily:'Oswald, sans-serif',letterSpacing:'0.1em',fontWeight:700,fontSize:'0.75rem',whiteSpace:'nowrap'}}>
+                      ADD EVENT
+                    </button>
+                  </div>
+
+                  {/* List of added events */}
+                  {userEvents.length > 0 && (
+                    <div style={{display:'flex',flexDirection:'column',gap:'0.4rem'}}>
+                      {userEvents.map((ev, i) => {
+                        const info = EVENT_TYPE_INFO[ev.type as CustomEventType] || EVENT_TYPE_INFO.survival;
+                        return (
+                          <div key={i} style={{display:'flex',alignItems:'center',gap:'0.6rem',background:'#080a06',border:'1px solid #1e2818',borderRadius:'5px',padding:'0.5rem 0.7rem'}}>
+                            <span style={{fontSize:'0.55rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.05em',color:info.color,background:`${info.color}15`,border:`1px solid ${info.color}33`,padding:'0.15rem 0.45rem',borderRadius:'2px',flexShrink:0}}>{info.icon} {info.label.toUpperCase()}</span>
+                            <span style={{fontSize:'0.78rem',color:'#a09880',flex:1,minWidth:0,overflowWrap:'break-word'}}>{ev.template}</span>
+                            <button onClick={() => removeEvent(i)} style={{background:'transparent',border:'none',color:'#8b1a1a',cursor:'pointer',fontSize:'1.1rem',flexShrink:0,lineHeight:1,padding:'0 0.2rem'}}>×</button>
+                          </div>
+                        );
+                      })}
+                      <p style={{fontSize:'0.68rem',color:'#5a5448',margin:'0.4rem 0 0',fontStyle:'italic'}}>These {userEvents.length} custom event{userEvents.length > 1 ? 's' : ''} will appear randomly alongside the built-in events when you run the Games.</p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
 
             <button onClick={handleStart} disabled={tributePool.length < 2} style={{width:'100%',background:tributePool.length>=2?'linear-gradient(135deg,#d4a017,#b8860b)':'#1e2818',color:tributePool.length>=2?'#0a0c06':'#5a5448',border:'none',borderRadius:'6px',padding:'1rem',fontSize:'1rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.2em',fontWeight:700,cursor:tributePool.length>=2?'pointer':'not-allowed'}}>
               {tributePool.length < 2 ? 'SELECT A GAME EDITION' : 'LET THE GAMES BEGIN →'}
