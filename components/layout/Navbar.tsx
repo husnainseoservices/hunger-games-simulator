@@ -9,6 +9,8 @@ const navLinks = [
   { href: '/districts', label: 'Districts' },
   { href: '/odds', label: 'Odds' },
   { href: '/quiz', label: 'Quiz' },
+  { href: '/simulation-lab', label: 'Simulation Lab' },
+  { href: '/arena-builder', label: 'Arena Builder' },
   { href: '/blog', label: 'Blog' },
 ];
 
