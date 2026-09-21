@@ -23,7 +23,7 @@ export default function SimulationLabContent() {
   };
   const toggle=(id:string)=>setSelected(s=>s.includes(id)?s.length>2?s.filter(x=>x!==id):s:[...s,id]);
 
-  return <main style={{maxWidth:1300,margin:'0 auto',padding:'2rem 1rem 5rem'}}>
+  return <main className="simulation-lab-page" style={{maxWidth:1300,margin:'0 auto',padding:'2rem 1rem 5rem'}}>
     <Link href="/" style={{color:'#d4a017',fontSize:'.7rem',textDecoration:'none'}}>HOME /</Link>
     <p style={{color:'#d4a017',fontFamily:'Oswald',letterSpacing:'.35em',fontSize:'.62rem',margin:'1rem 0 .4rem'}}>📊 ADVANCED ANALYTICS</p>
     <h1 style={{fontFamily:'Cinzel,serif',fontSize:'clamp(2rem,5vw,3.2rem)',margin:'0 0 .5rem'}}>10,000 Simulation Lab</h1>
@@ -44,10 +44,33 @@ export default function SimulationLabContent() {
       </aside>
     </section>
 
-    {result && <section style={{marginTop:'1.5rem',background:'#0d1009',border:'1px solid #1e2818',borderRadius:10,overflow:'auto'}}>
-      <div style={{padding:'1rem',borderBottom:'1px solid #1e2818'}}><h2 style={{fontFamily:'Cinzel,serif',margin:0}}>Results — {result.simulations.toLocaleString()} Games</h2><p style={{color:'#5a5448',fontSize:'.68rem'}}>Arena: {result.arena.name} · Rankings are sorted by simulated win rate.</p></div>
-      <table style={{width:'100%',borderCollapse:'collapse',minWidth:760}}><thead><tr>{['#','TRIBUTE','WIN RATE','AVG PLACE','AVG SURVIVAL','AVG KILLS','TOP 3'].map(h=><th key={h} style={th}>{h}</th>)}</tr></thead><tbody>{result.rows.map((r,i)=><tr key={r.tributeId}><td style={td}>{i+1}</td><td style={{...td,color:'#e8e0d0',fontFamily:'Cinzel,serif'}}>{r.name}</td><td style={{...td,color:'#d4a017',fontWeight:700}}>{r.winRate}%</td><td style={td}>{r.averagePlacement}</td><td style={td}>Day {r.averageSurvivalDay}</td><td style={td}>{r.averageKills}</td><td style={td}>{r.topThreeRate}%</td></tr>)}</tbody></table>
+        {result && <section style={{marginTop:'1.5rem',background:'#0d1009',border:'1px solid #1e2818',borderRadius:10,overflow:'auto'}}>
+      ...
     </section>}
+
+    <style>{`
+      .simulation-lab-page {
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+
+      .lab-grid {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 700px) {
+        .lab-grid {
+          grid-template-columns: 1fr !important;
+        }
+
+        .simulation-lab-page {
+          padding-left: 0.75rem !important;
+          padding-right: 0.75rem !important;
+        }
+      }
+    `}</style>
   </main>;
 }
 const label={display:'block',color:'#a09880',fontSize:'.68rem',marginTop:'.8rem',marginBottom:'.35rem'} as CSSProperties;
