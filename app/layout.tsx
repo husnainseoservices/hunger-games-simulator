@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5628042995841991"
-     crossorigin="anonymous"></script>
+     crossOrigin="anonymous"></script>
       </head>
       <body style={{ backgroundColor: '#080a06', color: '#e8e0d0', minHeight: '100vh', margin: 0 }}>
         <Navbar />
