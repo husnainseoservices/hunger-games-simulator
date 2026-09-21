@@ -2,11 +2,13 @@ import Link from 'next/link';
 
 const LINKS = {
   Simulate: [
-    { href: '/simulator', label: 'Game Simulator' },
-    { href: '/fight', label: '1v1 Fight Simulator' },
-    { href: '/odds', label: 'Odds Calculator' },
-    { href: '/quiz', label: 'Hunger Games Quiz' },
-  ],
+  { href: '/simulator', label: 'Game Simulator' },
+  { href: '/fight', label: '1v1 Fight Simulator' },
+  { href: '/simulation-lab', label: '10,000 Simulation Lab' },
+  { href: '/arena-builder', label: 'Custom Arena Builder' },
+  { href: '/odds', label: 'Odds Calculator' },
+  { href: '/quiz', label: 'Hunger Games Quiz' },
+],
   Explore: [
     { href: '/tributes', label: 'All Tributes' },
     { href: '/districts', label: 'Districts of Panem' },
