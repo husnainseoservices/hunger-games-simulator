@@ -13,12 +13,21 @@ export const metadata: Metadata = {
   description: 'The most advanced Hunger Games simulator. Simulate the 74th Games, Quarter Quell, and custom arenas. Full tribute stats, 1v1 fights, odds calculator, and Hunger Games quiz.',
   keywords: ['hunger games simulator', 'katniss everdeen', 'hunger games quiz', 'tribute simulator', 'panem simulator', 'hunger games odds'],
   openGraph: {
-    type: 'website',
-    siteName: 'Hunger Games Simulator',
-    images: [{ url: '/og-image.svg', width: 1200, height: 630 }],
-  },
-  twitter: { card: 'summary_large_image' },
-  robots: { index: true, follow: true },
+  type: 'website',
+  siteName: 'Hunger Games Simulator',
+  title: 'Hunger Games Simulator — Run the Games, Predict the Victor',
+  description:
+    'The most advanced Hunger Games simulator. Run the 74th Games, Quarter Quell, or custom arenas. Full tribute stats, 1v1 fights, live odds, and a 30-question quiz.',
+  images: [{ url: '/og-image.svg', width: 1200, height: 630 }],
+},
+twitter: {
+  card: 'summary_large_image',
+  title: 'Hunger Games Simulator — Run the Games, Predict the Victor',
+  description:
+    'The most advanced Hunger Games simulator. Run the 74th Games, Quarter Quell, or custom arenas. Full tribute stats, 1v1 fights, live odds, and a 30-question quiz.',
+  images: ['/og-image.svg'],
+},
+robots: { index: true, follow: true },
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
