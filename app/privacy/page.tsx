@@ -14,15 +14,40 @@ export default function PrivacyPage() {
       </nav>
       <h1 style={{fontFamily:'Cinzel, Georgia, serif',fontWeight:900,fontSize:'clamp(1.75rem,4vw,2.5rem)',margin:'0 0 1.5rem'}}>Privacy Policy</h1>
       <div style={{color:'#a09880',lineHeight:1.9,fontSize:'0.95rem'}}>
-        <p style={{marginBottom:'1.25rem'}}>Last updated: January 2025</p>
-        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>Data We Collect</h2>
-        <p style={{marginBottom:'1.25rem'}}>Hunger Games Simulator does not collect, store, or sell personal data. All simulation results, quiz scores, and preferences are processed locally in your browser. We do not require account creation or login.</p>
-        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>Analytics</h2>
-        <p style={{marginBottom:'1.25rem'}}>We may use privacy-focused analytics to understand aggregate traffic patterns (pages visited, session duration). No personally identifiable information is collected through analytics.</p>
-        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>Cookies</h2>
-        <p style={{marginBottom:'1.25rem'}}>We use no tracking or advertising cookies. Your browser may store preferences locally using localStorage for UI preferences only.</p>
-        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>Contact</h2>
-        <p style={{marginBottom:'1.25rem'}}>Questions about this policy can be directed through our site's contact page. This is a fan project and we have no advertising partners.</p>
+        <p style={{marginBottom:'1.25rem'}}><strong>Last updated: September 21, 2026</strong></p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>1. Information We Process</h2>
+        <p style={{marginBottom:'1.25rem'}}>Hunger Games Simulator does not require an account or login. Simulation results, quiz answers, and many preferences are processed locally in your browser. If you contact us, we may receive the information you choose to provide, such as your email address and message.</p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>2. Cookies and Local Storage</h2>
+        <p style={{marginBottom:'1.25rem'}}>The site may use local browser storage for functional preferences. If advertising or analytics services are enabled, those services may use cookies or similar technologies according to their own policies and applicable consent requirements.</p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>3. Google AdSense and Advertising</h2>
+        <p style={{marginBottom:'1.25rem'}}>We may use Google AdSense to display advertising. Google and its advertising partners may process technical and advertising-related information, such as device and browser information, IP address, and advertising identifiers, and may use cookies or similar technologies where permitted.</p>
+        <p style={{marginBottom:'1.25rem'}}>Where applicable law requires consent for advertising technologies or personalized advertising, the site will use the appropriate consent mechanism before processing for purposes that require consent. Advertising choices may also be available through Google's privacy and advertising settings.</p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>4. Analytics</h2>
+        <p style={{marginBottom:'1.25rem'}}>If analytics services are enabled, they may collect information about visits and site usage to help us understand aggregate traffic and improve the site. The specific services used will be reflected in this policy when enabled.</p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>5. Third-Party Services</h2>
+        <p style={{marginBottom:'1.25rem'}}>The site may use third-party services such as Google Fonts and Google advertising technology. Those providers may process technical information necessary to deliver their services under their own privacy policies.</p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>6. Your Choices</h2>
+        <p style={{marginBottom:'1.25rem'}}>You can manage browser cookies and storage through your browser settings. Where a consent interface is presented, you can use it to manage applicable advertising choices. Disabling optional technologies may affect some functionality.</p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>7. Children's Privacy</h2>
+        <p style={{marginBottom:'1.25rem'}}>The website is intended for a general audience and is not designed to knowingly collect personal information from children. Please do not submit personal information through the contact channel if you are not permitted to do so under applicable law.</p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>8. Data Retention</h2>
+        <p style={{marginBottom:'1.25rem'}}>Information voluntarily sent to us may be retained for as long as reasonably necessary to respond, maintain records, resolve disputes, or meet legal obligations.</p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>9. Policy Changes</h2>
+        <p style={{marginBottom:'1.25rem'}}>We may update this Privacy Policy when the site, services, or applicable requirements change. The updated date at the top of this page will be changed when material revisions are made.</p>
+
+        <h2 style={{fontFamily:'Cinzel, serif',color:'#e8e0d0',fontSize:'1.1rem',margin:'1.5rem 0 0.75rem'}}>10. Contact</h2>
+        <p style={{marginBottom:'1.25rem'}}>For privacy questions, copyright notices, or other site inquiries, please use our <Link href="/contact" style={{color:'#d4a017'}}>Contact page</Link>.</p>
+
+        <p style={{marginTop:'2rem',paddingTop:'1rem',borderTop:'1px solid #1e2818',fontSize:'0.82rem'}}><strong>Note:</strong> This page is a general website privacy notice and should be reviewed against the actual services enabled on the deployed site and the laws applicable to its visitors.</p>
       </div>
     </div>
   );
