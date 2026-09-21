@@ -1,5 +1,6 @@
-import type { CSSProperties } from 'react';
 'use client';
+
+import type { CSSProperties } from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import { arenaPresets, runAdvancedSimulation, type ArenaConfig, type AdvancedScenario } from '@/lib/advanced-simulation';
