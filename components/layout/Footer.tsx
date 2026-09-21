@@ -16,6 +16,8 @@ const LINKS = {
     { href: '/blog', label: 'Blog & Guides' },
     { href: '/about', label: 'About' },
     { href: '/privacy', label: 'Privacy Policy' },
+    { href: '/terms', label: 'Terms & Disclaimer' },
+    { href: '/contact', label: 'Contact' },
     { href: '/sitemap', label: 'Sitemap' },
   ],
 };
