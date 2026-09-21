@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const PAGES = [
   {section:'Simulator',links:[{href:'/simulator',label:'Full Game Simulator'},{href:'/fight',label:'1v1 Fight Simulator'},{href:'/odds',label:'Odds Calculator'},{href:'/quiz',label:'Hunger Games Quiz'}]},
   {section:'Browse',links:[{href:'/tributes',label:'All Tributes'},{href:'/districts',label:'Districts of Panem'},{href:'/leaderboard',label:'Victor Leaderboard'},{href:'/blog',label:'Blog & Guides'}]},
-  {section:'Info',links:[{href:'/about',label:'About'},{href:'/privacy',label:'Privacy Policy'}]},
+  {section:'Info',links:[{href:'/about',label:'About'},{href:'/privacy',label:'Privacy Policy'},{href:'/terms',label:'Terms & Disclaimer'},{href:'/contact',label:'Contact'}]},
 ];
 export default function SitemapPage() {
   return (
