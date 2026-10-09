@@ -4,6 +4,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: '1', slug: 'katniss-everdeen-tribute-guide', category: 'tribute-guides', readTime: 8, publishedAt: '2025-01-15', author: 'Arena Analyst',
     featuredImage: '/images/blog/katniss-guide.jpg',
+    imageAlt: 'Digital painting of Katniss Everdeen drawing her bow in the burning Hunger Games arena',
     tags: ['katniss','district-12','survival','archery'],
     title: 'Katniss Everdeen: Complete Tribute Guide & Simulator Stats',
     excerpt: 'The Girl on Fire broke every rule in Panem. Here\'s a full breakdown of Katniss Everdeen\'s stats, strategy, and why she\'s the most dangerous tribute in the simulator.',
@@ -31,6 +32,7 @@ Against Cato in direct combat, Katniss loses more often than she wins (Cato's St
   {
     id: '2', slug: 'career-tributes-analysis', category: 'analysis', readTime: 10, publishedAt: '2025-01-22', author: 'Arena Analyst',
     featuredImage: '/images/blog/careers.jpg',
+    imageAlt: 'Digital painting of Career tributes from Districts 1, 2 and 4 armed with swords and tridents',
     tags: ['careers','district-1','district-2','district-4','strategy'],
     title: 'Career Tributes Dominate: Why Districts 1, 2 & 4 Win Most Simulations',
     excerpt: 'Career tributes from Districts 1, 2, and 4 win about 29% of all simulator runs — still the strongest district bloc, but no longer a majority. We break down their stats, pack strategies, and the one fatal flaw that always brings them down.',
@@ -58,6 +60,7 @@ Non-Career tributes who survive longest typically do so by: avoiding the Cornuco
   {
     id: '3', slug: '74th-hunger-games-recap', category: 'game-recaps', readTime: 12, publishedAt: '2025-02-01', author: 'Capitol Correspondent',
     featuredImage: '/images/blog/74th-recap.jpg',
+    imageAlt: 'Digital painting of the golden Cornucopia at dawn among the 74th Hunger Games arena ruins',
     tags: ['74th','katniss','peeta','cato','recap'],
     title: '74th Hunger Games Complete Simulation Recap & Analysis',
     excerpt: 'The Games that changed everything. A full simulation replay of the 74th Hunger Games — cornucopia bloodbath, Career pack dominance, the tracker jacker incident, and Katniss and Peeta\'s impossible victory.',
@@ -85,6 +88,7 @@ Our simulator doesn't model political choices, but statistically, Katniss and Pe
   {
     id: '4', slug: 'tribute-power-rankings', category: 'rankings', readTime: 6, publishedAt: '2025-02-10', author: 'Capitol Analyst',
     featuredImage: '/images/blog/power-rankings.jpg',
+    imageAlt: 'Digital painting of a golden tribute power rankings leaderboard rising over a dark arena',
     tags: ['rankings','power','stats','all-tributes'],
     title: 'Complete Hunger Games Tribute Power Rankings 2025',
     excerpt: 'Every tribute ranked from #1 to #24 using our weighted stat algorithm. Finnick, Katniss, and Cato battle for the top — but who actually wins the most simulations?',
@@ -112,6 +116,7 @@ Our algorithm's weakest-ranked tributes (Mags, Annie, Wiress) consistently outpe
   {
     id: '5', slug: 'quarter-quell-75th-breakdown', category: 'game-recaps', readTime: 11, publishedAt: '2025-02-20', author: 'Arena Analyst',
     featuredImage: '/images/blog/75th-quell.jpg',
+    imageAlt: 'Aerial digital painting of the 75th Hunger Games clock arena divided into twelve zones',
     tags: ['quarter-quell','75th','finnick','johanna','katniss'],
     title: 'Quarter Quell Breakdown: The Most Dangerous Arena Ever Simulated',
     excerpt: 'The 75th Hunger Games Quarter Quell arena scores 98/100 on our Danger Meter — the highest we\'ve ever seen. Clock arena, past victors, and Beetee\'s lightning plan.',
@@ -139,6 +144,7 @@ The lightning tree sequence — Beetee's plan to electrocute tributes through wi
   {
     id: '6', slug: 'odds-calculator-guide', category: 'strategy', readTime: 5, publishedAt: '2025-03-01', author: 'Capitol Odds Bureau',
     featuredImage: '/images/blog/odds-guide.jpg',
+    imageAlt: 'Digital illustration of glowing betting odds bars rising over a dark Hunger Games arena',
     tags: ['odds','calculator','probability','strategy'],
     title: 'How to Use the Hunger Games Odds Calculator',
     excerpt: 'Master our odds calculator. Learn how victory probability is computed, what the dark horse indicator means, and how adjusting the tribute pool shifts odds dramatically.',
@@ -166,6 +172,7 @@ Our odds are most accurate for predicting early-game survival. They're less accu
   {
     id: '7', slug: 'rue-tribute-profile', category: 'tribute-guides', readTime: 7, publishedAt: '2025-03-10', author: 'Arena Analyst',
     featuredImage: '/images/blog/rue-profile.jpeg',
+    imageAlt: 'Digital painting of Rue hiding among giant sunflowers in the Hunger Games arena',
     tags: ['rue','district-11','stealth','youngest','katniss-alliance'],
     title: 'Rue: District 11\'s Youngest Tribute & The Stealth Master',
     excerpt: 'At 12 years old with a 98 Stealth rating, Rue is the most deceptively dangerous tribute in our simulator. How does the youngest tribute survive longer than most Careers?',
@@ -193,6 +200,7 @@ In most simulation runs, Rue dies because of random combat encounters in the mid
   {
     id: '8', slug: 'finnick-odair-profile', category: 'tribute-guides', readTime: 8, publishedAt: '2025-03-18', author: 'Arena Analyst',
     featuredImage: '/images/blog/finnick-profile.jpg',
+    imageAlt: "Digital painting of Finnick Odair's golden trident rising from stormy ocean waves",
     tags: ['finnick','district-4','victor','trident','youngest-victor'],
     title: 'Finnick Odair: The Youngest Victor & Our #2 Ranked Tribute',
     excerpt: 'Won the Games at 14. Charisma 99. Weapon Skill 97. Finnick Odair is one of the most statistically complete tributes ever to enter our simulator — here\'s why he\'s almost unbeatable.',
@@ -220,6 +228,7 @@ In 500 head-to-head simulations: combat = Katniss wins 52% (slight edge from Wea
   {
     id: '9', slug: 'district-12-complete-guide', category: 'district-profiles', readTime: 9, publishedAt: '2025-03-25', author: 'Capitol Correspondent',
     featuredImage: '/images/blog/district-12.jpg',
+    imageAlt: 'Digital painting of the District 12 coal mining town glowing at dusk',
     tags: ['district-12','katniss','peeta','haymitch','coal'],
     title: 'District 12 Complete Guide: The Poorest District With the Best Victors',
     excerpt: 'District 12 has a Wealth Level of 15/100 and Capitol Loyalty of just 20. Yet it produced three of the most legendary tributes in Games history. Here\'s why.',
@@ -247,6 +256,7 @@ When you run the 74th Games simulation, District 12 tributes survive an average 
   {
     id: '10', slug: 'best-simulator-strategies', category: 'strategy', readTime: 8, publishedAt: '2025-04-01', author: 'Arena Analyst',
     featuredImage: '/images/blog/strategies.jpg',
+    imageAlt: 'Digital illustration of Hunger Games simulator strategy with glowing tribute tokens on a war table',
     tags: ['strategy','tips','simulator','guide','winning'],
     title: '7 Proven Strategies to Win the Hunger Games Simulator',
     excerpt: 'After thousands of simulation runs, we\'ve identified 7 strategies that consistently produce victors. From tribute selection to arena type — here\'s how to maximize your wins.',
@@ -282,6 +292,7 @@ Before committing to a custom Games, use our 1v1 Fight simulator to test key mat
   {
     id: '11', slug: 'cornucopia-bloodbath-analysis', category: 'analysis', readTime: 7, publishedAt: '2025-04-08', author: 'Arena Analyst',
     featuredImage: '/images/blog/cornucopia.jpg',
+    imageAlt: 'Tributes sprinting toward the golden Cornucopia during the Hunger Games bloodbath',
     tags: ['cornucopia','bloodbath','day-1','statistics','deaths'],
     title: 'Cornucopia Bloodbath Analysis: What Really Happens on Day 1',
     excerpt: 'Day 1 at the Cornucopia claims 3-8 tributes in every simulation. We analyzed 1,000 runs to find out who survives, who dies, and what stats matter most in those first 60 seconds.',
@@ -309,6 +320,7 @@ If you're building a custom simulation and want interesting early-game drama: in
   {
     id: '12', slug: 'foxface-stealth-guide', category: 'tribute-guides', readTime: 6, publishedAt: '2025-04-15', author: 'Arena Analyst',
     featuredImage: '/images/blog/foxface-guide.jpg',
+    imageAlt: 'Digital painting of Foxface slipping through shadows beside a feast table',
     tags: ['foxface','district-5','stealth','strategy','intelligence'],
     title: 'Foxface: The Stealth God Who Never Fought Anyone',
     excerpt: 'Stealth 99. Intelligence 98. Survival 95. Foxface has never won a direct combat encounter in our simulator — yet she consistently outlasts the majority of our 37-tribute field. How?',
@@ -336,6 +348,7 @@ To give Foxface the best simulator odds: remove Beetee (whose trap intelligence 
   {
     id: '13', slug: 'all-districts-hunger-games-guide', category: 'district-profiles', readTime: 15, publishedAt: '2025-04-22', author: 'Capitol Correspondent',
     featuredImage: '/images/blog/all-districts.jpg',
+    imageAlt: 'Digital painting of all twelve districts of Panem shown as glowing industry panels',
     tags: ['districts','all-districts','panem','guide','rankings'],
     title: 'Complete Guide to All 13 Districts of Panem — Wealth, Loyalty & Victor History',
     excerpt: 'Every district ranked and analyzed. From District 1\'s 92/100 Wealth to District 12\'s 15/100. Victor counts, tribute stats, and Capitol loyalty scores for all 13 districts.',
@@ -366,7 +379,8 @@ By district: D2 leads with 52 historical wins, D1 follows with 47, D4 with 35. T
   },
   {
     id: '14', slug: 'haymitch-abernathy-guide', category: 'tribute-guides', readTime: 9, publishedAt: '2026-05-12', author: 'Arena Analyst',
-    featuredImage: '/images/blog/haymitch-guide.svg',
+    featuredImage: '/images/blog/haymitch-guide.jpg',
+    imageAlt: "Digital painting of Haymitch Abernathy raising a goblet in the dark victors' lounge",
     tags: ['haymitch','district-12','50th-games','intelligence','strategy'],
     title: 'Haymitch Abernathy: The Smartest Victor Ever & His 50th Games Masterclass',
     excerpt: 'Intelligence 97. The only tribute to weaponize the arena itself. How Haymitch won the 50th Games with brains over brawn — and what his stats teach us about simulator strategy.',
@@ -401,7 +415,8 @@ To maximize Haymitch's odds: run a large field (more tributes = more combat attr
   },
   {
     id: '15', slug: 'johanna-mason-profile', category: 'tribute-guides', readTime: 8, publishedAt: '2026-06-03', author: 'Arena Analyst',
-    featuredImage: '/images/blog/johanna-guide.svg',
+    featuredImage: '/images/blog/johanna-guide.jpg',
+    imageAlt: 'Digital painting of Johanna Mason gripping an axe in a rain-soaked forest arena',
     tags: ['johanna','district-7','victor','axes','psychological-warfare'],
     title: 'Johanna Mason: District 7\u2019s Axe-Wielding Psychological Warrior',
     excerpt: 'She won by pretending to be weak, then unleashed brutal violence. Johanna Mason\u2019s combination of axe mastery, psychological warfare, and unbreakable will makes her one of the simulator\u2019s most dangerous victors.',
@@ -432,7 +447,8 @@ Our composite ranks Johanna at 84.1 — strong, but our lab data suggests she ou
   },
   {
     id: '16', slug: 'arena-design-strategy-guide', category: 'strategy', readTime: 10, publishedAt: '2026-07-20', author: 'Capitol Analyst',
-    featuredImage: '/images/blog/arena-design.svg',
+    featuredImage: '/images/blog/arena-design.jpg',
+    imageAlt: 'Concept art of a Hunger Games arena with desert, jungle, tundra and volcanic zones',
     tags: ['arena','strategy','gamemaker','hazards','terrain','custom'],
     title: 'Arena Design Strategy: How Terrain and Hazards Decide Who Wins',
     excerpt: 'The arena is the 25th tribute. Our lab data proves terrain and hazard choices shift win rates by up to 40%. Here\u2019s how to design arenas that favor your favorite tributes.',
@@ -467,7 +483,8 @@ The practical guide: Katniss wants forest with moderate hazards. Finnick wants w
   },
   {
     id: '17', slug: 'simulation-engine-methodology', category: 'analysis', readTime: 11, publishedAt: '2026-09-02', author: 'Arena Analyst',
-    featuredImage: '/images/blog/methodology.svg',
+    featuredImage: '/images/blog/methodology.jpg',
+    imageAlt: 'Digital illustration of the simulation engine methodology with holographic charts',
     tags: ['methodology','engine','transparency','statistics','how-it-works'],
     title: 'Inside the Engine: How Our Hunger Games Simulator Actually Works',
     excerpt: 'Full transparency: the exact stat weights, event types, randomness model, and validation process behind every simulation on this site. No black boxes.',
@@ -506,7 +523,8 @@ We're transparent about what the engine doesn't model: political decisions (the 
   },
   {
     id: '18', slug: 'sunrise-on-the-reaping-50th-games-guide', category: 'game-recaps', readTime: 11, publishedAt: '2026-10-01', author: 'Capitol Correspondent',
-    featuredImage: '/images/blog/sunrise-reaping.svg',
+    featuredImage: '/images/blog/sunrise-reaping.jpg',
+    imageAlt: 'Digital painting of sunrise over the reaping square with the glass reaping bowl',
     tags: ['sunrise-on-the-reaping','50th-games','haymitch','second-quarter-quell','maysilee-donner'],
     title: 'Sunrise on the Reaping: The 50th Hunger Games & Second Quarter Quell Explained',
     excerpt: 'Twice the tributes. Double the terror. Everything you need to know about the 50th Hunger Games — the Second Quarter Quell where a 16-year-old Haymitch Abernathy out-thought the entire arena.',
@@ -541,7 +559,8 @@ Our 50th Games simulator edition recreates the Second Quarter Quell with an expa
   },
   {
     id: '19', slug: 'maysilee-donner-tribute-guide', category: 'tribute-guides', readTime: 8, publishedAt: '2026-10-03', author: 'Arena Analyst',
-    featuredImage: '/images/blog/maysilee-donner.svg',
+    featuredImage: '/images/blog/maysilee-donner.jpg',
+    imageAlt: 'Digital painting memorial of Maysilee Donner with blowgun darts and jungle flowers',
     tags: ['maysilee-donner','district-12','50th-games','sunrise-on-the-reaping','tribute-guide'],
     title: 'Maysilee Donner: District 12\u2019s Forgotten Hero of the 50th Games',
     excerpt: 'Haymitch\u2019s closest ally in the Second Quarter Quell. Clever, brave, and deadly with a blowgun — Maysilee Donner finally gets the tribute guide she deserves, with full simulator stats.',
@@ -576,7 +595,8 @@ Maysilee is now in our tribute database with a full profile page — stats, bio,
   },
   {
     id: '20', slug: '50th-games-simulator-strategy', category: 'strategy', readTime: 9, publishedAt: '2026-10-05', author: 'Arena Analyst',
-    featuredImage: '/images/blog/50th-strategy.svg',
+    featuredImage: '/images/blog/50th-strategy.jpg',
+    imageAlt: 'Digital painting of the 50th Hunger Games arena meadow at golden dawn',
     tags: ['50th-games','strategy','second-quarter-quell','simulator-guide','double-tributes'],
     title: '50th Games Simulator Strategy: How to Win a Double-Tribute Bloodbath',
     excerpt: 'Twice the tributes changes everything. Our lab data reveals how the 50th Games edition\u2019s 24-tribute field rewrites win probabilities — and the 5 strategies that exploit it.',

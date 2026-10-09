@@ -72,6 +72,7 @@ export interface BlogPost {
   readTime: number;
   tags: string[];
   featuredImage: string;
+  imageAlt: string;
   seo: { metaTitle: string; metaDescription: string; keywords: string[] };
 }
 

@@ -40,10 +40,10 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
               <span style={{fontSize:'0.72rem',color:'#5a5448'}}>⏱️ {post.readTime} min read</span>
             </div>
 
-            {/* Hero image placeholder */}
-            <div style={{height:'200px',background:`linear-gradient(135deg, ${catColor}18 0%, #080a06 100%)`,borderRadius:'8px',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:'1.75rem',border:`1px solid ${catColor}22`}}>
-              <span style={{fontSize:'3rem',fontFamily:'Cinzel, serif',fontWeight:900,color:`${catColor}30`}}>{post.title.charAt(0)}</span>
-            </div>
+            {/* Hero image */}
+            <figure style={{margin:'0 0 1.75rem'}}>
+              <img src={post.featuredImage} alt={post.imageAlt} width={1200} height={630} fetchPriority="high" style={{width:'100%',height:'auto',borderRadius:'8px',display:'block',border:`1px solid ${catColor}22`}} />
+            </figure>
 
             {/* Content */}
             <div style={{color:'#a09880',lineHeight:1.9,fontSize:'0.95rem'}}>

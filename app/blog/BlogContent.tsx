@@ -45,8 +45,9 @@ export default function BlogPage() {
         {featured && (
           <Link href={`/blog/${featured.slug}`} style={{textDecoration:'none',display:'block',marginBottom:'1.5rem'}}>
             <article className="blog-feat" style={{background:'#0d1009',border:'1px solid rgba(212,160,23,0.2)',borderRadius:'12px',overflow:'hidden'}}>
-              <div style={{height:'220px',background:`linear-gradient(135deg, ${CAT_COLORS[featured.category]||'#d4a017'}20, #080a06)`,display:'flex',alignItems:'flex-end',padding:'1.25rem',minHeight:'220px'}}>
-                <span style={{fontSize:'0.6rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.2em',color:CAT_COLORS[featured.category]||'#d4a017',background:`${CAT_COLORS[featured.category]||'#d4a017'}18`,border:`1px solid ${CAT_COLORS[featured.category]||'#d4a017'}44`,padding:'0.25rem 0.75rem',borderRadius:'2px'}}>FEATURED · {featured.category.replace('-',' ').toUpperCase()}</span>
+              <div style={{height:'220px',minHeight:'220px',position:'relative',overflow:'hidden'}}>
+                <img src={featured.featuredImage} alt={featured.imageAlt} width={800} height={420} loading="eager" fetchPriority="high" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} />
+                <span style={{position:'absolute',left:'1.25rem',bottom:'1.25rem',fontSize:'0.6rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.2em',color:'#fff',background:'rgba(8,10,6,0.65)',border:`1px solid ${CAT_COLORS[featured.category]||'#d4a017'}66`,padding:'0.25rem 0.75rem',borderRadius:'2px'}}>FEATURED · {featured.category.replace('-',' ').toUpperCase()}</span>
               </div>
               <div style={{padding:'1.5rem',display:'flex',flexDirection:'column',justifyContent:'center'}}>
                 <h2 style={{fontSize:'clamp(1rem,3vw,1.4rem)',fontFamily:'Cinzel, serif',fontWeight:900,color:'#e8e0d0',margin:'0 0 0.6rem',lineHeight:1.3}}>{featured.title}</h2>
@@ -64,8 +65,9 @@ export default function BlogPage() {
           {rest.map(post => (
             <Link key={post.id} href={`/blog/${post.slug}`} style={{textDecoration:'none'}}>
               <article style={{background:'#0d1009',border:'1px solid #1e2818',borderRadius:'10px',overflow:'hidden',height:'100%',display:'flex',flexDirection:'column',cursor:'pointer'}}>
-                <div style={{height:'100px',background:`linear-gradient(135deg, ${CAT_COLORS[post.category]||'#d4a017'}15, #0a0c08)`,display:'flex',alignItems:'flex-end',padding:'0.75rem'}}>
-                  <span style={{fontSize:'0.58rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.1em',color:CAT_COLORS[post.category]||'#d4a017'}}>{post.category.replace('-',' ').toUpperCase()}</span>
+                <div style={{height:'140px',position:'relative',overflow:'hidden'}}>
+                  <img src={post.featuredImage} alt={post.imageAlt} width={560} height={280} loading="lazy" style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}} />
+                  <span style={{position:'absolute',left:'0.75rem',bottom:'0.75rem',fontSize:'0.58rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.1em',color:'#fff',background:'rgba(8,10,6,0.65)',padding:'0.15rem 0.5rem',borderRadius:'2px'}}>{post.category.replace('-',' ').toUpperCase()}</span>
                 </div>
                 <div style={{padding:'1rem',flex:1,display:'flex',flexDirection:'column'}}>
                   <h3 style={{fontSize:'0.9rem',fontFamily:'Cinzel, serif',fontWeight:700,color:'#e8e0d0',lineHeight:1.4,margin:'0 0 0.5rem',flex:1}}>{post.title}</h3>

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       type: 'article',
       publishedTime: post.publishedAt,
       authors: [post.author],
-      images: [{ url: post.featuredImage }],
+      images: [{ url: post.featuredImage, width: 1200, height: 630, alt: post.imageAlt }],
     },
     twitter: { card: 'summary_large_image', title: post.title, description: post.excerpt.slice(0, 160) },
   };
@@ -38,7 +38,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     datePublished: post.publishedAt,
     author: { '@type': 'Person', name: post.author },
     publisher: { '@type': 'Organization', name: 'Hunger Games Simulator' },
-    image: `https://hungergamessimulators.com${post.featuredImage}`,
+    image: {
+      '@type': 'ImageObject',
+      url: `https://hungergamessimulators.com${post.featuredImage}`,
+      width: 1200,
+      height: 630,
+      caption: post.imageAlt,
+    },
   } : null;
 
   const breadcrumbSchema = post ? {
