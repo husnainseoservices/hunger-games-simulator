@@ -13,7 +13,7 @@ export default function Page() {
     <>
       <PageIntro
         kicker="👤 TRIBUTE DATABASE"
-        title="All 36 Tributes, Fully Scored"
+        title="All 37 Tributes, Fully Scored"
         paragraphs={[
           'The most complete fan-built tribute database on the internet. All 37 tributes from the Hunger Games saga — spanning the original trilogy, the Ballad of Songbirds & Snakes, and key rebellion-era characters — each scored across eight stats derived from their canon backgrounds.',
           'Every profile includes a full stat breakdown (strength, agility, survival, intelligence, charisma, stealth, weapon skill, alliance loyalty), a biography, training score, signature weapon, arena strategy tags, a memorable quote, and live victory odds computed against the full pool.',

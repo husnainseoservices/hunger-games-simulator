@@ -29,7 +29,7 @@ export default function TributesPage() {
             <Link href="/" style={{color:'#d4a017',textDecoration:'none'}}>Home</Link><span>/</span><span style={{color:'#a09880'}}>Tributes</span>
           </nav>
           <p style={{color:'#d4a017',fontSize:'0.62rem',fontFamily:'Oswald, sans-serif',letterSpacing:'0.4em',margin:'0 0 0.4rem'}}>👤 THE TRIBUTE ROSTER</p>
-          <h1 style={{fontSize:'clamp(1.75rem,5vw,2.75rem)',fontFamily:'Cinzel, Georgia, serif',fontWeight:900,margin:'0 0 0.4rem'}}>All Tributes</h1>
+          <h2 style={{fontSize:'clamp(1.75rem,5vw,2.75rem)',fontFamily:'Cinzel, Georgia, serif',fontWeight:900,margin:'0 0 0.4rem'}}>All Tributes</h2>
           <p style={{color:'#a09880',margin:0}}>{tributes.length} tributes from {districts.length} districts — full stats, weapons, strategies</p>
         </div>
 

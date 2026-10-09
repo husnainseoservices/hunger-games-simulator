@@ -6,6 +6,29 @@ import { blogPosts, getPostBySlug } from '@/data/blog-posts';
 
 const CAT_COLORS: Record<string,string> = { 'tribute-guides':'#d4a017','analysis':'#70a0e8','strategy':'#e87070','game-recaps':'#e8a030','district-profiles':'#70c870','rankings':'#c070e8' };
 
+function renderBold(text: string, kp: string | number) {
+  return text.split(/\*\*(.*?)\*\*/g).map((part, j) =>
+    j % 2 === 0 ? part : <strong key={`${kp}-b${j}`} style={{color:'#e8e0d0',fontWeight:700}}>{part}</strong>
+  );
+}
+
+function renderInline(text: string, kp: string | number) {
+  return text.split(/(\[.*?\]\(.*?\))/g).map((part, i) => {
+    const m = part.match(/^\[(.*?)\]\((.*?)\)$/);
+    if (m) {
+      const url = m[2];
+      const external = /^https?:\/\//.test(url);
+      const inner = renderBold(m[1], `${kp}-l${i}`);
+      return external ? (
+        <a key={`${kp}-l${i}`} href={url} target="_blank" rel="noopener noreferrer" style={{color:'#d4a017',textDecoration:'underline'}}>{inner}</a>
+      ) : (
+        <Link key={`${kp}-l${i}`} href={url} style={{color:'#d4a017',textDecoration:'underline'}}>{inner}</Link>
+      );
+    }
+    return <span key={`${kp}-t${i}`}>{renderBold(part, `${kp}-t${i}`)}</span>;
+  });
+}
+
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const post = getPostBySlug(slug);
@@ -51,7 +74,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                 if (p.startsWith('**') && p.endsWith('**')) return (
                   <h2 key={i} style={{fontSize:'clamp(1rem,2.5vw,1.2rem)',fontFamily:'Cinzel, serif',fontWeight:700,color:'#e8e0d0',margin:'2rem 0 0.75rem'}}>{p.replace(/\*\*/g,'')}</h2>
                 );
-                return <p key={i} style={{marginBottom:'1.25rem'}}>{p.split(/\*\*(.*?)\*\*/g).map((part, j) => j%2===0 ? part : <strong key={j} style={{color:'#e8e0d0',fontWeight:700}}>{part}</strong>)}</p>;
+                return <p key={i} style={{marginBottom:'1.25rem'}}>{renderInline(p, i)}</p>;
               })}
             </div>
 

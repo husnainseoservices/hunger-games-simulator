@@ -5,7 +5,7 @@ import PageIntro from '@/components/layout/PageIntro';
 
 export const metadata: Metadata = {
   title: 'Best Hunger Games Simulators Compared (2026)',
-  description: 'Honest comparison of the best Hunger Games simulators: BrantSteele, hungergamessimulator.net, SimuBlast, horrorgames.io, and hungergamessimulators.com. Features, pros, and verdict.',
+  description: 'Honest comparison of the best Hunger Games simulators: BrantSteele, SimuBlast, hungergamessimulator.net and more. Features, pros, and verdict.',
   alternates: { canonical: '/best-hunger-games-simulators' },
 };
 

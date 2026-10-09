@@ -18,14 +18,14 @@ export const metadata: Metadata = {
   title: 'Hunger Games Simulator — Run the Games, Predict the Victor',
   description:
     'The most advanced Hunger Games simulator. Run the 74th Games, Quarter Quell, or custom arenas. Full tribute stats, 1v1 fights, live odds, and a 30-question quiz.',
-  images: [{ url: '/og-image.svg', width: 1200, height: 630 }],
+  images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Hunger Games Simulator — run the Games, predict the victor' }],
 },
 twitter: {
   card: 'summary_large_image',
   title: 'Hunger Games Simulator — Run the Games, Predict the Victor',
   description:
     'The most advanced Hunger Games simulator. Run the 74th Games, Quarter Quell, or custom arenas. Full tribute stats, 1v1 fights, live odds, and a 30-question quiz.',
-  images: ['/og-image.svg'],
+  images: ['/og-image.jpg'],
 },
 robots: { index: true, follow: true },
   icons: {
@@ -47,9 +47,26 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const orgSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Hunger Games Simulator',
+    url: 'https://hungergamessimulators.com',
+    logo: 'https://hungergamessimulators.com/favicon.ico',
+    sameAs: [],
+  };
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Hunger Games Simulator',
+    url: 'https://hungergamessimulators.com',
+    inLanguage: 'en',
+  };
   return (
     <html lang="en">
       <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
